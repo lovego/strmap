@@ -12,7 +12,7 @@ func Convert(data map[interface{}]interface{}, path string) (
 	for k, v := range data {
 		key, ok := k.(string)
 		if !ok {
-			return nil, fmt.Errorf("key: %s%v is not a string.")
+			return nil, fmt.Errorf("key: %v is not a string.", k)
 		}
 		switch value := v.(type) {
 		case map[interface{}]interface{}:

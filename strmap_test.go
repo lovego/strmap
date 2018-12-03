@@ -27,7 +27,7 @@ func TestGet1(t *testing.T) {
 }
 
 func TestGet2(t *testing.T) {
-	defer checkPanic(t, `unable to cast "value1" of type string to map[string]interface{}`)
+	defer checkPanic(t, `invalid character 'v' looking for beginning of value`)
 	got := sm.Get(`key1`)
 	t.Errorf("expect panic got: %v\n", got)
 }
