@@ -2,7 +2,6 @@ package strmap
 
 import (
 	"fmt"
-	// "github.com/lovego/xiaomei/utils"
 )
 
 func Convert(data map[interface{}]interface{}, path string) (
