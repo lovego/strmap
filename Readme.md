@@ -1,4 +1,5 @@
 # strmap
+
 map with string keys and interface{} values.
 
 [![Build Status](https://travis-ci.org/lovego/strmap.svg?branch=master)](https://travis-ci.org/lovego/strmap)
@@ -7,8 +8,9 @@ map with string keys and interface{} values.
 [![GoDoc](https://godoc.org/github.com/lovego/strmap?status.svg)](https://godoc.org/github.com/lovego/strmap)
 
 ## Install
+
 `$ go get github.com/lovego/strmap`
 
-
 ## Documentation
+
 [https://godoc.org/github.com/lovego/strmap](https://godoc.org/github.com/lovego/strmap)

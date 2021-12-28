@@ -12,7 +12,16 @@ func (s StrMap) Get(key string) StrMap {
 	if s == nil || s[key] == nil {
 		log.Panicf("no key: %s", key)
 	}
-	value, err := cast.ToStringMapE(s[key])
+
+	var val interface{}
+	switch v := s[key].(type) {
+	case StrMap:
+		val = (map[string]interface{})(v)
+	default:
+		val = v
+	}
+
+	value, err := cast.ToStringMapE(val)
 	if err != nil {
 		log.Panic(err)
 	}
