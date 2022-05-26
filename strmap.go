@@ -13,19 +13,22 @@ func (s StrMap) Get(key string) StrMap {
 		log.Panicf("no key: %s", key)
 	}
 
+	value, err := cast.ToStringMapE(trans(s[key]))
+	if err != nil {
+		log.Panic(err)
+	}
+	return StrMap(value)
+}
+
+func trans(value interface{}) interface{} {
 	var val interface{}
-	switch v := s[key].(type) {
+	switch v := value.(type) {
 	case StrMap:
 		val = (map[string]interface{})(v)
 	default:
 		val = v
 	}
-
-	value, err := cast.ToStringMapE(val)
-	if err != nil {
-		log.Panic(err)
-	}
-	return StrMap(value)
+	return val
 }
 
 func (s StrMap) GetSlice(key string) (results []StrMap) {
@@ -37,8 +40,8 @@ func (s StrMap) GetSlice(key string) (results []StrMap) {
 		log.Panic(err)
 	}
 	for _, v := range slice {
-		if value, err := cast.ToStringMapE(v); err == nil {
-			results = append(results, value)
+		if value, err := cast.ToStringMapE(trans(v)); err == nil {
+			results = append(results, StrMap(value))
 		} else {
 			log.Panic(err)
 		}
